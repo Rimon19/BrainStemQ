@@ -1,30 +1,6 @@
 
 <header class="header">
-
-  <!-- Header bar -->
-  <div class="header_bar">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="header_bar_content d-flex flex-row align-items-center justify-content-start">
-            <div class="sub_button text-center"><a href="https://www.youtube.com/channel/UC17wjvXPdf3t6DRnvY_j4rw?view_as=subscriber&fbclid=IwAR2bq3OsP03_NfUSCgrY-isi5yuVfrutyZkZcDXMh3pVmFrGNNTJtDIJrAI">subscribe</a><div class="d-flex flex-row align-items-start justify-content-start"><div></div><div></div><div></div></div></div>
-            <div class="header_social ml-auto">
-
-              <ul class="d-flex flex-row align-items-center justify-content-start">
-             
-                <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                <li><a href="https://www.youtube.com/channel/UC17wjvXPdf3t6DRnvY_j4rw?view_as=subscriber&fbclid=IwAR2bq3OsP03_NfUSCgrY-isi5yuVfrutyZkZcDXMh3pVmFrGNNTJtDIJrAI"><img src="\assets\img\youtube.png" alt="" style="height: 20px;"> </a></li>
-                <li><a href="https://www.facebook.com/bdnews24ghontacom-355447578400262"><img src="\assets\img\facebook.png" alt="" style="height: 20px;">  </a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
 
   <!-- Header Content -->
   <div class="header_content_container">
@@ -36,7 +12,7 @@
               <a href="#">
 
                 <!-- <div class="logo"><span>Tech</span>mag</div> -->
-                <div class="logo"><img src="/assets/log1.jpg" alt="" width="100px" width="250px"></div>
+                <div class="logo"><img src="/assets/log1.jpg" alt="" height="100px" width="250px"></div>
                 <!-- <div class="logo_sub">Innovation & Technology Magazine</div> -->
               </a>
             </div>
@@ -44,8 +20,8 @@
               <a href="#">
                 <div class="background_image" style="background-image:url(/assets/img/core-img/extra.jpg)"></div>
                 <div class="header_extra_content">
-                  <div class="header_extra_title">save 50%</div>
-                  <div class="header_extra_subtitle">Buy now in stores</div>
+                  <div class="header_extra_title">Question?</div>
+                  <div class="header_extra_subtitle">Find Your Answer !</div>
                 </div>
               </a>
             </div>
@@ -65,28 +41,34 @@
             <!-- Logo -->
             <div class="logo_container">
               <a href="#">
-                <div class="logo"><span>Tech</span>mag</div>
-                <div class="logo_sub">Innovation & Technology Magazine</div>
+                <div class="logo"><span>Brain</span>Stem</div>
+                <div class="logo_sub">Q</div>
               </a>
             </div>
-
+ 
             <!-- Navigation -->
             <nav class="main_nav">
               <ul class="main_nav_list d-flex flex-row align-items-center justify-content-start"> 
-                <li><a [routerLink]="['home/','home']">home</a></li>
-                <li><a [routerLink]="['home/','জাতীয়']"  >জাতীয়</a></li>
-                <li><a [routerLink]="['/home','আন্তর্জাতিক']" >আন্তর্জাতিক</a></li>
-                <li><a [routerLink]="['/somogroDesh']">সমগ্রদেশ</a></li>
-                <li><a [routerLink]="['/home','অর্থনীতি']">অর্থনীতি</a></li>
-                <li><a [routerLink]="['/home','শিল্প-সংস্কৃতি']">শিল্প-সংস্কৃতি</a></li>
-                <li><a [routerLink]="['/home','খেলা']">খেলা</a></li>
-                <li><a [routerLink]="['/home','ধর্ম']" >ধর্ম</a></li>
-                <li><a [routerLink]="['/home','মতামত']" >মতামত</a></li>
-               <li><a [routerLink]="['/home','ভিডিও']">ভিডিও</a></li>
+               <li> <!-- Search -->
+                <div class="header_search_container ml-auto">
+                  <div class="header_search">
+                    <form action="#" id="header_search_form" class="header_search_form d-flex flex-row align-items-center justfy-content-start">
+                      <div><div class="header_search_activation"><i class="fa fa-search" aria-hidden="true"></i></div></div>
+                      <input type="text" class="header_search_input" placeholder="Search Your Answer" required="required">
+                    </form>
+                  </div>
+                </div></li>
+               
+                <li><a [routerLink]="['/home','Angular']" >Angular</a></li>
+                <li><a [routerLink]="['/home','Angular']" >.Net</a></li>
+                <li><a [routerLink]="['/home','Angular']" >Sql Server</a></li>
+                <li><a [routerLink]="['/home','Angular']" >Firebase</a></li>
+                <li><a [routerLink]="['/home','Angular']" >JavaScript</a></li>
              
-              <li>
+             
+              <!-- <li>
                <div class="dropdown">
-              <span>অন্যান্য </span>
+              <span>Others </span>
               <div class="dropdown-content">
                 <a class="dropdown-item"[routerLink]="['/home','বিজ্ঞান ও প্রযুক্তি']">বিজ্ঞান ও প্রযুক্তি</a>
                     <a class="dropdown-item" [routerLink]="['/home','কৃষি']">কৃষি</a>     
@@ -97,20 +79,12 @@
                     <a class="dropdown-item" [routerLink]="['/home','লাইফস্টাইল']">লাইফস্টাইল</a>
               </div>
             </div>
-              </li>
+              </li> -->
 
               </ul>
             </nav>
 
-            <!-- Search -->
-            <div class="header_search_container ml-auto">
-              <div class="header_search">
-                <form action="#" id="header_search_form" class="header_search_form d-flex flex-row align-items-center justfy-content-start">
-                  <div><div class="header_search_activation"><i class="fa fa-search" aria-hidden="true"></i></div></div>
-                  <input type="text" class="header_search_input" placeholder="Search" required="required">
-                </form>
-              </div>
-            </div>
+          
 
             <!-- Hamburger -->
             <div class="hamburger ml-auto menu_mm"><i class="fa fa-bars  trans_200 menu_mm" aria-hidden="true"></i></div>

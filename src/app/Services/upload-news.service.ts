@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { tap, finalize } from 'rxjs/operators';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 @Injectable({
@@ -15,33 +15,35 @@ export class UploadNewsService {
   constructor(private db: AngularFireDatabase,
     private storage:AngularFireStorage) { }
 
-  add(obj) {
+  add(obj,dbName) {
   
-    return  this.db.list(`uploadNews`).push(obj);
+    return  this.db.list(`${dbName}`).push(obj);
    }
 
-   update(id, obj) {
-    return this.db.object(`/uploadNews/` + id).update(obj);
+   update(id, obj,dbName) {
+    return this.db.object(`/${dbName}/` + id).update(obj);
    }
    
- getByIdDistric(id):Observable<any>{
-  return this.db.list(`/uploadNews/` + id)
+ getById(key,dbName):Observable<any>{
+  return this.db.list(`/${dbName}/` + key)
   .valueChanges()
   .pipe(catchError(err => of(null)));
  }
 
  
- getAll():any { 
-  return  this.db.list(`/uploadNews`);
+ getAll(dbName):any{ 
+  return this.db.object(`/${dbName}/`);
+}
+getAllList(dbName):any{ 
+  return this.db.object(`/${dbName}/`);
+}
+  delete(key: string,dbName) {
+  return this.db.list(`/${dbName}`).remove(key);
 }
 
-  delete(key: string) {
-  return this.db.list(`/uploadNews`).remove(key);
-}
-
-startUpLoad(uploadNews){
+startUpLoad(uploadNews,dbName){
     
-  const path=`uploadImage/${Date.now()}_${uploadNews.imageUrlFile.name}`;
+  const path=`${dbName}/${Date.now()}_${uploadNews.imageUrlFile.name}`;
   uploadNews.imageUrlName=`${Date.now()}_${uploadNews.imageUrlFile.name}`;
   const ref=this.storage.ref(path);
   
@@ -56,7 +58,9 @@ startUpLoad(uploadNews){
       await ref.getDownloadURL().toPromise().then(t=>{
          
         uploadNews.imageUrl=t;
-       this.db.list(`uploadNews/`).push(uploadNews);
+       this.db.list(`${dbName}/`).push(uploadNews).then(t=>{
+        alert('Saved');
+       });
       });
 
       

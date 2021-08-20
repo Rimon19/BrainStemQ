@@ -41,10 +41,8 @@
 	font-family: 'HelveticaNeueLTPro';
 	src: url('../fonts/HelveticaNeueLTPro-Md.eot'); /* IE9 Compat Modes */
   	src: url('../fonts/HelveticaNeueLTPro-Md.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		url('../fonts/HelveticaNeueLTPro-Md.woff2') format('woff2'), /* Super Modern Browsers */
-		url('../fonts/HelveticaNeueLTPro-Md.woff') format('woff'), /* Pretty Modern Browsers */
-		url('../fonts/HelveticaNeueLTPro-Md.ttf')  format('truetype'); /* Safari, Android, iOS */
-	font-weight: normal;
+		
+		
 }
 
 /*********************************

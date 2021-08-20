@@ -16,7 +16,7 @@ import { UploadNewsComponent } from './components/upload-news/upload-news.compon
 import { SingleNewsDetailsComponent } from './components/single-news-details/single-news-details.component';
 
 const routes: Routes =[
-    { path: '', redirectTo: 'home/জাতীয়', pathMatch: 'full' },
+    { path: '', redirectTo: 'home/Angular', pathMatch: 'full' },
     { path: 'index',                component: ComponentsComponent },
     { path: 'examples/landing',     component: LandingComponent },
     { path: 'examples/login',       component: LoginComponent },
@@ -24,9 +24,9 @@ const routes: Routes =[
     { path: 'examples/sign-up',     component: SignUpComponent },
 
     { path: 'home/:id',     component: HomeComponent },
-    { path: 'somogroDesh',     component: SomogroDeshComponent },
+     { path: 'somogroDesh',     component: SomogroDeshComponent },
 
-    { path: 'newsDetails/:id',     component: SingleNewsDetailsComponent },
+    { path: 'Answer/:a/:id',     component: SingleNewsDetailsComponent },
     { path: 'uploadNews',     component: UploadNewsComponent }
 ];
 

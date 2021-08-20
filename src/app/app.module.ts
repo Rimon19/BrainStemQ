@@ -15,6 +15,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'environments/environment';
 import { DistricsService } from './Services/districs.service';
+ 
 @NgModule({
     declarations: [
         AppComponent,
@@ -23,6 +24,7 @@ import { DistricsService } from './Services/districs.service';
     imports: [
         BrowserAnimationsModule,
         NgbModule,
+        
         FormsModule,
         RouterModule,
         AppRoutingModule,

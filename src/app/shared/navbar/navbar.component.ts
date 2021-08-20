@@ -42,20 +42,20 @@ export class NavbarComponent implements OnInit {
         this.sidebarVisible = true;
     };
     sidebarClose() {
-        const html = document.getElementsByTagName('html')[0];
-        // console.log(html);
-        this.toggleButton.classList.remove('toggled');
-        this.sidebarVisible = false;
-        html.classList.remove('nav-open');
+        // const html = document.getElementsByTagName('html')[0];
+        
+        // this.toggleButton.classList.remove('toggled');
+        // this.sidebarVisible = false;
+        // html.classList.remove('nav-open');
     };
     sidebarToggle() {
-        // const toggleButton = this.toggleButton;
-        // const body = document.getElementsByTagName('body')[0];
-        if (this.sidebarVisible === false) {
-            this.sidebarOpen();
-        } else {
-            this.sidebarClose();
-        }
+        //  const toggleButton = this.toggleButton;
+        //  const body = document.getElementsByTagName('body')[0];
+        // if (this.sidebarVisible === false) {
+        //     this.sidebarOpen();
+        // } else {
+        //     this.sidebarClose();
+        // }
     };
   
     isDocumentation() {

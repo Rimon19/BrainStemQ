@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsCategoryService } from 'app/Services/news-category.service';
 import { UploadNews } from 'app/Model/upload';
 import { UploadNewsService } from 'app/Services/upload-news.service';
+import { Questions } from 'app/Model/questions';
 
 @Component({
   selector: 'app-upload-news',
@@ -10,7 +11,7 @@ import { UploadNewsService } from 'app/Services/upload-news.service';
 })
 export class UploadNewsComponent implements OnInit {
 newCategoryList=[];
-uploadNews=new UploadNews();
+uploadNews=new Questions();
 selectedFilesForImage:FileList;
 news=[];
   constructor(private newsCategoryService:NewsCategoryService,
@@ -26,20 +27,37 @@ news=[];
        });
 
 
-       this.uploadNewsService.getAll().valueChanges().subscribe(item=>{
-        this.news=item;
-         console.log(item);
+      //  this.uploadNewsService.getAll().valueChanges().subscribe(item=>{
+      //   this.news=item;
+      //    console.log(item);
         
-         });
+      //    });
   }
-  onSubmit(uploadNews){
-    uploadNews.entryDate = new Date().getTime();
-    console.log(this.news.length);
-    uploadNews.totolNewsLenth= this.news.length;
-   this.uploadNewsService.startUpLoad(uploadNews);
+  onSubmit(qObject){
+    qObject.qEntryDate = new Date().getTime();
+    qObject.isViewd =false;
+    qObject.ViewCount =0;
+    qObject.qBy ='Admin';
+    console.log(qObject);
+    
+   
+      if(qObject.imageUrlFile!=null){
+        this.uploadNewsService.startUpLoad(qObject,'Questions');
+      } else{
+       this.uploadNewsService.add(qObject,'Questions').then(t=>{
+           console.log(t);
+           alert('Saved')
+         }).catch(c=>{console.log(c)});
+
+      }
   }
 
-
+  genarateToken(question){
+    this.uploadNewsService.add(question,'Token').then(t=>{
+      console.log(t.key);
+      this.uploadNews.token=t.key;
+    });
+  }
   detectFilesForImageUrlFile(event) {
     this.selectedFilesForImage = event.target.files;
     this.uploadNews.imageUrlFile = this.selectedFilesForImage.item(0);
