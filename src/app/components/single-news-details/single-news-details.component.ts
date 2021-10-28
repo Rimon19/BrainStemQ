@@ -1,4 +1,5 @@
-import { Component, OnInit, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ElementRef, OnDestroy, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Questions } from 'app/Model/questions';
 import { UploadNews } from 'app/Model/upload';
@@ -9,7 +10,7 @@ import { UploadNewsService } from 'app/Services/upload-news.service';
   templateUrl: './single-news-details.component.html',
   styleUrls: ['./single-news-details.component.css']
 })
-export class SingleNewsDetailsComponent implements OnInit {
+export class SingleNewsDetailsComponent implements OnInit,PipeTransform {
   questions =new Questions();
   key;
   sideTrendingQ=[];
@@ -18,7 +19,8 @@ export class SingleNewsDetailsComponent implements OnInit {
   newsDetailsByEntryDate=new UploadNews();
   constructor( private element : ElementRef,
     private route:ActivatedRoute,
-    private uploadNewsService:UploadNewsService) {
+    private uploadNewsService:UploadNewsService,
+    protected sanitizer: DomSanitizer) {
     
     console.log(this.key );
     this.route.params.subscribe(routeParams => {
@@ -50,7 +52,9 @@ export class SingleNewsDetailsComponent implements OnInit {
                 console.log(ans);
                
                 this.questions.Answers=items.filter(f=>f.qToken==this.questions.token);
-               
+              //   this.questions.Answers.forEach(qaElm => {
+              //    this.transform(qaElm.answerDetails);
+              //  });
                 console.log(this.questions) 
            });
            
@@ -66,7 +70,11 @@ export class SingleNewsDetailsComponent implements OnInit {
 
  
 }
-
+transform(value) {
+  // console.log(value);
+  // value=this.ans.answerDetails;
+    return this.sanitizer.bypassSecurityTrustHtml(value);
+  }
 ngOnDestroy(){
     let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
 

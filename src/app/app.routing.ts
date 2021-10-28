@@ -26,7 +26,7 @@ const routes: Routes =[
     { path: 'home/:id',     component: HomeComponent },
      { path: 'somogroDesh',     component: SomogroDeshComponent },
 
-    { path: 'Answer/:a/:id',     component: SingleNewsDetailsComponent },
+    { path: 'Answer/:id/:a',     component: SingleNewsDetailsComponent },
     { path: 'uploadNews',     component: UploadNewsComponent }
 ];
 

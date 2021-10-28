@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "bdnews-31b12"
-  }
+    "default": "bdnews-31b12",
+    "bdnews-31b12": "brainstemq"
+  },
+  "targets": {}
 }

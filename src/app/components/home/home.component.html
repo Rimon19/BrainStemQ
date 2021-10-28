@@ -60,9 +60,13 @@
                             </div>
                             
                             <div class="col-md-7 no-trans">
-                              <h5 class="font-medium cursor-pointer" >
+                              <h5 class="font-medium cursor-pointer" > <a style="color: black;"
+                              *ngIf="q.key!=undefined" [routerLink]="['/Answer/',q.key,q.queryParams]" 
+                                
+                              > 
                                {{q.questions}}
-                              </h5>
+                             </a> </h5>
+
                               <p class="m-t-20">
                                 {{q.questionsHeader}}
                               </p>
@@ -73,7 +77,7 @@
                             </div>
                             <div class="col-md-2 no-trans">
                               <a
-                              *ngIf="q.key!=undefined" [routerLink]="['/Answer/',q.queryParams,q.key]" 
+                              *ngIf="q.key!=undefined" [routerLink]="['/Answer/',q.key,q.queryParams]" 
                                 class="linking font-medium text-themecolor m-t-10 cursor-pointer"
                               >
                                 <span >Answer Details</span>
@@ -114,7 +118,7 @@
           <div class="row">
               <div class="col-12">
                   <div class="footer-add">
-                      <a href="#"><img src="assets/img/bg-img/footer-add.gif" alt=""></a>
+                      <!-- <a href="#"><img src="assets/img/bg-img/footer-add.gif" alt=""></a> -->
                   </div>
               </div>
           </div>
@@ -133,26 +137,26 @@
                   <!-- Footer Widget Area -->
                   <div class="col-12 col-sm-6 col-lg-4">
                       <div class="footer-widget-area mt-80">
-                          <!-- Footer Logo -->
+                         
                           <div class="footer-logo">
                               <a href="assets/index.html"><img src="assets/img/core-img/logo.png" alt=""></a>
                           </div>
-                          <!-- List -->
+                        
                           <ul class="list">
-                              <li><a href="bdnews24ghonta@gmail.com">bdnews24ghonta@gmail.com</a></li>
-                              <li><a href="tel: +8801777054201 ">+8801777054201 </a></li>
+                              <li><a href="brainstemq@gmail.com">brainstemq@gmail.com</a></li>
+                              <!-- <li><a href="tel: +01763073681 ">+01763073681 </a></li> -->
                              
-                              <!-- <li><a href="http://yoursitename.com">www.yoursitename.com</a></li> -->
+                             
                           </ul>
                       </div>
                   </div>
     
-                  <!-- Footer Widget Area -->
-                  <div class="col-12 col-sm-6 col-lg-2">
+                 
+                  <!-- <div class="col-12 col-sm-6 col-lg-2">
                       <div class="footer-widget-area mt-80">
-                          <!-- Title -->
+                           
                           <h4 class="widget-title">Politics</h4>
-                          <!-- List -->
+                          
                           <ul class="list">
                               <li><a href="#">Business</a></li>
                               <li><a href="#">Markets</a></li>
@@ -162,12 +166,12 @@
                       </div>
                   </div>
     
-                  <!-- Footer Widget Area -->
+                 
                   <div class="col-12 col-sm-4 col-lg-2">
                       <div class="footer-widget-area mt-80">
-                          <!-- Title -->
+                        
                           <h4 class="widget-title">Featured</h4>
-                          <!-- List -->
+                          
                           <ul class="list">
                               <li><a href="#">Football</a></li>
                               <li><a href="#">Golf</a></li>
@@ -181,12 +185,12 @@
                       </div>
                   </div>
     
-                  <!-- Footer Widget Area -->
+                
                   <div class="col-12 col-sm-4 col-lg-2">
                       <div class="footer-widget-area mt-80">
-                          <!-- Title -->
+                         
                           <h4 class="widget-title">FAQ</h4>
-                          <!-- List -->
+                       
                           <ul class="list">
                               <li><a href="#">Aviation</a></li>
                               <li><a href="#">Business</a></li>
@@ -200,12 +204,12 @@
                       </div>
                   </div>
     
-                  <!-- Footer Widget Area -->
+                  
                   <div class="col-12 col-sm-4 col-lg-2">
                       <div class="footer-widget-area mt-80">
-                          <!-- Title -->
+                         
                           <h4 class="widget-title">+More</h4>
-                          <!-- List -->
+                         
                           <ul class="list">
                               <li><a href="#">Fashion</a></li>
                               <li><a href="#">Design</a></li>
@@ -215,20 +219,20 @@
                               <li><a href="#">Luxury</a></li>
                           </ul>
                       </div>
-                  </div>
+                  </div> -->
               </div>
           </div>
       </div>
     
-      <!-- Bottom Footer Area -->
+    
       <div class="bottom-footer-area">
           <div class="container h-100">
               <div class="row h-100 align-items-center">
                   <div class="col-12">
-                      <!-- Copywrite -->
-                      <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.facebook.com/rimon.mominur/" target="_blank">Md. Mominur Hossain(Rimon)</a>
-    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                  
+                      <p> 
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.facebook.com/rimon.mominur/" target="_blank">BrainStemQ</a>
+    </p>
                   </div>
               </div>
           </div>

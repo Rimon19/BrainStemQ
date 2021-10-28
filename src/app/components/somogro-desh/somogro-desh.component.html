@@ -22,34 +22,64 @@
                            </ul>
                           </div>
 
-                          <div class="form-group">
-                            <label for="exampleInputEmail1">Answer Heder</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Answer Header" name="answerHeder" [(ngModel)]="answer.answerHeder">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                          </div>
-
-                          <div class="form-group">
-                            <label for="exampleInputEmail1">Image</label>
-                            <input type="file" (change)="detectFilesForImageUrlFile($event)" name="image" class="form-control" type="file"
-                            multiple="multiple" placeholder="image">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputEmail1">Answer Link</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Answer Link" name="aRelavantLink" [(ngModel)]="answer.aRelavantLink">
-                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Answer In Details</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="answerDetails" [(ngModel)]="answer.answerDetails"></textarea>
-                          </div>
-
                           
+
+                         
+                           
+                          <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Answer In Details 
+                              <span>
+                                <button type="button" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="SetObj(bold)">Bold</button>
+                               
+                                <button type="button" (click)="SetObj(hyperlink)" data-toggle="modal" data-target=".bd-example-modal-sm">Hyperlink</button>
+                                <button type="button" (click)="SetObj(image)" data-toggle="modal" data-target=".bd-example-modal-sm">Image</button>
+                                <button type="button" (click)="SetObj(Ul)" data-toggle="modal" data-target=".bd-example-modal-sm">Ul</button>
+                                
+                                <button type="button" (click)="SetObj(code)" data-toggle="modal" data-target=".bd-example-modal-sm">code</button>
+                                <button type="button" (click)="SetObj(textarea)" data-toggle="modal" data-target=".bd-example-modal-sm">Textarea</button>
+                                <button type="button" (click)="SetObj(tbl)" data-toggle="modal" data-target=".bd-example-modal-sm">Table</button>
+                            </span>
+                          </label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" name="answerDetails" [(ngModel)]="answer.answerDetails"></textarea>
+                          </div>
+
+                     
                        
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        <button data-toggle="modal" data-target=".bd-example-modal-lg" type="button" class="btn btn-primary" (click)="transform()">Preview Design</button>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Image</label>
+                          <input type="file" (change)="detectFilesForImageUrlFile($event)" name="image" class="form-control" type="file"
+                          multiple="multiple" placeholder="image">
+                          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        </div>
+                        
                       </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Large modal -->
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+         
+      <span [innerHtml]="transform()"></span>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      {{displaySampleCode}}
+    </div>
+  </div>
+</div>
+
+  
+ 

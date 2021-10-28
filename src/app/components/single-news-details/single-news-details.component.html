@@ -18,29 +18,19 @@
                                 <a href="#"><img [src]="questions.imageUrl" alt="" ></a>
                             </div>
                             <div class="post-data">
-                                <a href="#" class="post-catagory">
-                                  <h3> {{questions.questions}}</h3> 
+                              
+                                  <h3 > {{questions.questions}}</h3> 
                                  
-                                  </a>
-                                <a href="#" class="post-title">
-                                    <h6>{{questions.questionsHeader}}</h6>
-                                </a>
+                                 
+                                
+                                    <h5 >{{questions.questionsHeader}}</h5>
+                               
                                 <div class="post-meta" *ngFor="let ans of questions.Answers">
-                                    <p class="post-author">By <a href="#">Williams</a></p>
-                                    <h4>{{ans.answerHeder}}</h4> 
-                                 
-                                    
+                                    <!-- <p class="post-author">By <a href="#">Williams</a></p> -->
+  
+                                        <span [innerHtml]="transform(ans.answerDetails)"></span>
+                                          
                                      
-                                     <div class="text-style" >{{ans.answerDetails}} </div>
-                                      <textarea *ngIf="ans.codingDetails!undefined" [(ngModel)]="ans.codingDetails" name="" id="" cols="100" rows="10"></textarea>
-                            
-                                    <div class="post-thumb">
-                                      <a href="#"><img [src]="ans.imageUrl" alt="" ></a>
-                                  </div>
-                                  <a href="#" class="post-catagory">
-                                      <h3> {{ans.aRelavantLink}}</h3> 
-                                     
-                                      </a>
                                     <!-- <a href="#" class="related--post">Related: Facebook announces changes to combat election meddling</a> -->
                                     <!-- <p>Donec turpis erat, scelerisque id euismod sit amet, fermentum vel dolor. Nulla facilisi. Sed pellentesque lectus et accu msan aliquam. Fusce lobortis cursus quam, id mattis sapien. Aliquam erat volutpat. Aliquam placerat, est quis sagi ttis tincidunt, ipsum eros posuere mi, ut finibus quam sem eget ex. Interdum et malesuada fames ac ante ipsum pr imis in faucibus. Donec commodo quis enim ac auctor. Ut et mollis felis, sit amet ultricies est. Suspendisse sed faucibus tortor. </p> -->
                                     <div class="newspaper-post-like d-flex align-items-center justify-content-between">
@@ -183,11 +173,9 @@
                                     <a href="#"><img src="assets/q.jpg" alt="" style="height:30px;width: 80px;"></a>
                                 </div>
                                 <div class="post-data">
-                                    <a *ngIf="sideObj.key!=undefined" [routerLink]="['/Answer',sideObj.key]"  class="post-catagory">{{sideObj.questions}}</a>
+                                    <a *ngIf="sideObj.key!=undefined" [routerLink]="['/Answer',sideObj.key,sideObj.queryParams]"  class="post-catagory">{{sideObj.questions}}</a>
                                     <div class="post-meta">
-                                        <a *ngIf="sideObj.key!=undefined" [routerLink]="['/Answer',sideObj.queryParams,sideObj.key]" class="post-title">
-                                            <h6>{{sideObj.questionsHeader}}</h6>
-                                        </a>
+                                         
                                         <p class="post-date"><span>{{sideObj.qEntryDate|date}}</span></p>
                                     </div>
                                 </div>

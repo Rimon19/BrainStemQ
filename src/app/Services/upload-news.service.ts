@@ -71,5 +71,35 @@ startUpLoad(uploadNews,dbName){
   this.snapshot.subscribe(d=>{})
 }
 
+startUpLoadTwo(uploadNews,dbName){
+    
+  const path=`${dbName}/${Date.now()}_${uploadNews.imageUrlFile.name}`;
+  uploadNews.imageUrlName=`${Date.now()}_${uploadNews.imageUrlFile.name}`;
+  const ref=this.storage.ref(path);
+  
+  this.task=this.storage.upload(path,uploadNews.imageUrlFile);
 
+
+  this.percentage=this.task.percentageChanges();
+
+ 
+  this.snapshot=this.task.snapshotChanges().pipe(
+    finalize(async()=>{
+      await ref.getDownloadURL().toPromise().then(t=>{
+         
+        uploadNews.imageUrl=t;
+        console.log(t);
+        alert(t);
+      //  this.db.list(`${dbName}/`).push(uploadNews).then(t=>{
+      //   alert('Saved');
+      //  });
+      });
+
+      
+    
+    }),
+  );
+      
+  this.snapshot.subscribe(d=>{})
+}
 }

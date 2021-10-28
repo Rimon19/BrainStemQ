@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Answers } from 'app/Model/answers';
@@ -14,9 +14,78 @@ import { map } from 'rxjs/operators';
   templateUrl: './somogro-desh.component.html',
   styleUrls: ['./somogro-desh.component.css']
 })
-export class SomogroDeshComponent implements OnInit {
+export class SomogroDeshComponent implements OnInit,PipeTransform {
+  displaySampleCode='';
+bold=`<strong>..</strong>`;
+
+hyperlink=`<Strong><a href="">Link</a></Strong> 
+<a href="http://" target="_blank" rel="noopener noreferrer">Blank Link</a>`;
+
+image=` <img src="...." alt="" style="height:500px;width: 900px;">`;
+Ul=`<ul>
+<li>...</li>
+<li>...</li>
+</ul>`;
+
+code=`<pre style="background-color: cornsilk;font-size: large;">
+<code>
+ ..........
+</code>
+</pre>`;
+textarea=`
+<textarea name="" id="" cols="30" rows="10">--</textarea>
+`
+
+tbl=`
+<table>
+  <thead>
+    <th>A</th>
+    <th>B</th>
+    <th>C</th>
+  </thead>
+  <tbody>
+    <td>1</td>
+    <td>1</td>
+    <td>1</td>
+  </tbody>
+  
+ 
+</table>`;
+
+  ul=`
+  <br>
+  
+  <ul>
+  <li>live</li><br>
+  <li>Food</li>
+</ul>
+<ol>
+<input type="text">
+    <li>Relax</li>
+                      </ol>
+                      
+                     
+                      <br>
+
+                      <Strong><a href="">Link</a></Strong> 
+                      <a href="http://" target="_blank" rel="noopener noreferrer">Blank Link</a>
+                       
+                      
+
+<h1>Hello</h1>
+
+<ul>
+  <li>Test</li>
+  <li>Unorder </li>
+  <li>list</li>
+  
+</ul>
 
 
+                      
+`
+;
+ ImgUrl="";
 answer=new Answers();
 selectedFilesForImage:FileList;
 
@@ -30,13 +99,48 @@ filteredItem:any[];
      // private element : ElementRef,
       private uploadNewsService:UploadNewsService,
       private route:ActivatedRoute,
+      protected sanitizer: DomSanitizer
    //    private _sanitizer: DomSanitizer 
   ) { 
       //  this.videoURL='https://www.youtube.com/embed/1ozGKlOzEVc';
       //  this.vedio1 = this._sanitizer.bypassSecurityTrustResourceUrl(this.videoURL);
     //  this.itemsMap = itemsMap || {};
        }
-
+       transform() {
+    
+      
+        return this.sanitizer.bypassSecurityTrustHtml(this.answer.answerDetails);
+      }
+      SetObj(value){
+         
+      //   let obj='';
+      //   if(value=='Bold'){
+      //     obj=this.bold;
+      //   }
+      // //  else if(value='Italic'){
+      // //     obj=this.
+      // //   }
+      //     if(value=='Hyperlink'){
+      //     obj=this.hyperlink;
+      //   }
+      //      if(value=='Image'){
+      //     obj=this.image;
+      //   }
+      //      if(value=='Ul'){
+      //     obj=this.Ul;
+      //   }
+      //   // else  if(value='Ol'){
+      //   //   obj=this.
+      //   // }
+      //      if(value=='code'){
+      //     obj=this.code;
+      //   }
+      //      if(value=='Table'){
+      //     obj=this.tbl;
+      //   }
+      //   this.answer.answerDetails=this.answer.answerDetails+obj;
+      this.displaySampleCode=value;
+      }
   ngOnInit(): void {
     // this.districsService.getAll().valueChanges().subscribe(item=>{
     //      this.districList=item;
@@ -107,15 +211,15 @@ filteredItem:any[];
     console.log(aObject);
     
    
-      if(aObject.imageUrlFile!=null){
-        this.uploadNewsService.startUpLoad(aObject,'Answers');
-      } else{
+     // if(aObject.imageUrlFile!=null){
+       // this.uploadNewsService.startUpLoad(aObject,'Answers');
+     // } else{
        this.uploadNewsService.add(aObject,'Answers').then(t=>{
            console.log(t);
            alert('Saved')
          }).catch(c=>{console.log(c)});
 
-      }
+     // }
   }
   onChangeQuestion(qId){
     // this.uploadNewsService.getAll('Questions').valueChanges().subscribe(s=>{
@@ -133,6 +237,8 @@ filteredItem:any[];
     this.selectedFilesForImage = event.target.files;
     this.answer.imageUrlFile = this.selectedFilesForImage.item(0);
     console.log(this.answer.imageUrlFile);
+     
+    this.uploadNewsService.startUpLoadTwo(this.answer,'Answers');
   }
 
 }
